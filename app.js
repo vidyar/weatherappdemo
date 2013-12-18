@@ -9,6 +9,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var request = require('request');
+var weather = require('./weather');
 var app = express();
 
 // all environments
@@ -28,37 +29,12 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var getApiData = function() {
-  var WeatherData = {
-    Overall_Weather_Text : 'N/A',
-    Temperature : 'N/A',
-    Wind: 'N/A'
-  };
-  try {
-    request({
-      method: 'GET',
-      url: 'http://www.myweather2.com/developer/forecast.ashx?uac=TOM4fBu8mN&query=00000&output=json',
-    },function(err,res,data) {
-       if(err) {
-         return WeatherData; 
-       }
-       else {
-         var currentWeather = weather.curren_weather;
-         WeatherData.Overall_Weather_Text = currentWeather.weather_text;
-         WeatherData.Temperature = currentWeather.temp;
-         WeatherData.Wind = currentWeather.wind.speed;
-         return WeatherData;
-       }
-    });
-   }catch(err) {
-
-   }
-   return WeatherData;
-}
-
-app.get('/',function(req,res) {
-   var WeatherData = getApiData();
-   routes.index(req,res,WeatherData);
+app.get('/',routes.index);
+app.get('/results',function(req,res) {
+   weather.httpGet(12345,function(err,weatherData) {
+     console.log('D: %j', weatherData);
+     routes.index(req,res);
+   });
 });
 app.get('/users', user.list);
 
