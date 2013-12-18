@@ -8,7 +8,8 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <form action="/results" method="post">
-      <input type="text" pattern="^\d{5}$" name="zipCode" required />
+      <input type="text" pattern="^\d{5}$" name="zipCode" required /> <br/>
+      <label>Please enter valid 5 digit zip codes Ex: 12345 </label> <br/>
       <input type="submit" value="search" />
     </form>
   </body>
