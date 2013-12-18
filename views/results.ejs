@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Weather Result</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Weather for zip code <%= zipCode %></p>
+    <h1>Weather for zip code <%= zipCode %></h1>
     <% if(data) { %>
-    <p>Overall Weather : <%= data.weatherText %></p>
+    <p>Overall Weather : <%= data.overallWeatherText %></p>
     <p>Temperature (in celcius): <%= data.temperature %></p>
     <p> Wind (in kph): <%= data.windSpeed %></p>
     <% } %>

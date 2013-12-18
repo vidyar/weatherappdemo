@@ -30,10 +30,23 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/',routes.index);
-app.get('/results',function(req,res) {
-   weather.httpGet(12345,function(err,weatherData) {
-     console.log('D: %j', weatherData);
-     routes.index(req,res);
+app.post('/results',function(req,res) {
+   var zipCode = req.body.zipCode;
+   weather.httpGet(zipCode,function(err,weatherData) {
+     var filteredWeatherData = {
+       overallWeatherText : 'N/A',
+       temperature : 'N/A',
+       windSpeed: 'N/A'
+     };
+     if(!err) {
+       //Consult myweather2.com API for more information..
+       var propertiesOfWeatherForecast = weatherData.weather.curren_weather[0];
+       console.log('D: %j', propertiesOfWeatherForecast);
+       filteredWeatherData.overallWeatherText =  propertiesOfWeatherForecast.weather_text;
+       filteredWeatherData.temperature = propertiesOfWeatherForecast.temp;
+       filteredWeatherData.windSpeed =  propertiesOfWeatherForecast.wind[0].speed;
+     }
+     routes.results(req,res,zipCode,filteredWeatherData);
    });
 });
 app.get('/users', user.list);
