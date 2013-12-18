@@ -13,8 +13,13 @@ var weather = {
 	   console.log(err);
            done(err,null);
           } else {
-           data = JSON.parse(data);
-           return done(null,data);
+           var returnData;
+	   try {
+             returnData = JSON.parse(data);
+           } catch(jsonParseError) {
+              return done('Error parsing json',null);
+           }
+           return done(null,returnData);
           }
      });
   }
