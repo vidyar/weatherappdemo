@@ -10,6 +10,7 @@ var weather = {
        url: getUrl
        }, function(err, res, data){
          if (err) {
+	   console.log(err);
            done(err,null);
           } else {
            data = JSON.parse(data);
