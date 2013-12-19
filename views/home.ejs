@@ -1,6 +1,19 @@
-<h1>Github profile</h1>
-<p> <%= user %>
 
-<div class="GithubController">
-{{data}}
-</div>
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/lib/angular/angular.js"></script>
+    <script src="/javascripts/lib/angular/angular-route.js"></script>
+   <script src="/javascripts/app.js"></script>
+    <script src="/javascripts/controllers.js"></script>
+  </head>
+  <body>
+    <p><%= user %></p>
+      <input type="text"  ng-model="searchTerm" required /> <br/>
+      <a ng-href src="/login">Check</a>
+    <div data-ng-controller="GithubController">
+      <p>data is {{data}} </p>
+    </div>
+  </body>
+</html>
