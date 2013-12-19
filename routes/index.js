@@ -9,3 +9,6 @@ exports.index = function(req, res,data){
 exports.results = function(req,res,zipCode,data) {
   res.render('results', { zipCode : zipCode, data: data });
 };
+exports.home = function(req,res) {
+  res.render('home');
+};
