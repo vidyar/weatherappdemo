@@ -74,6 +74,10 @@ app.post('/results',function(req,res) {
      routes.results(req,res,zipCode,filteredWeatherData);
    });
 });
+//Test code.. To be removed
+app.get('/test',function(req,res) {
+  res.end('Test');
+});
 app.get('/users', user.list);
 app.get('/home',routes.home);
 //Github Auth

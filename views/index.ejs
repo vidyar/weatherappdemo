@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/lib/angular/angular.js"></script>
+    <script src="/javascripts/lib/angular/angular-route.js"></script>
+   <script src="/javascripts/app.js"></script>
+    <script src="/javascripts/controllers.js"></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <a href="/auth/github">Login</a>
+    <div data-ng-controller="GithubController">
+      <p>data is {{data}} </p>
+    </div>
     <form action="/results" method="post">
       <input type="text" pattern="^\d{5}$" name="zipCode" required /> <br/>
       <label>Please enter valid 5 digit zip codes Ex: 12345 </label> <br/>
