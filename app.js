@@ -14,6 +14,17 @@ var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var app = express();
 
+//Required by passport to maintain the session.
+//Note: If session is not handled by express i.e. stored in cookieSession or a store on the server
+//the session is lost if the app is stopped.
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 //Initalize the strategy here..
 passport.use(
   new GitHubStrategy({
@@ -74,8 +85,8 @@ app.get('/auth/github',
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
-    console.log("%j",req);
-    res.redirect('/home');
+    console.log("%j",req.user);
+    routes.home(req,res,JSON.stringify(req.user));
   });
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
