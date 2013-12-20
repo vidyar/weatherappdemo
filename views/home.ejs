@@ -11,7 +11,7 @@
   <body ng-controller="GithubController">
     <p><%= user %></p>
       <input type="text"  ng-model="searchTerm" required /> <br/>
-      <button ng-click="findUser()">Find</button>
+      <button type="submit" ng-click="findUser()" ng-disabled="!searchTerm">Find</button>
       <p>data is {{data}} </p>
   </body>
 </html>
