@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="appControllers">
   <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/javascripts/lib/angular/angular.js"></script>
@@ -8,12 +8,10 @@
    <script src="/javascripts/app.js"></script>
     <script src="/javascripts/controllers.js"></script>
   </head>
-  <body>
+  <body ng-controller="GithubController">
     <p><%= user %></p>
       <input type="text"  ng-model="searchTerm" required /> <br/>
-      <a ng-href src="/login">Check</a>
-    <div data-ng-controller="GithubController">
+      <button ng-click="findUser()">Find</button>
       <p>data is {{data}} </p>
-    </div>
   </body>
 </html>
