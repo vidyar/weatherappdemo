@@ -11,7 +11,9 @@
   <body ng-controller="GithubController">
     <p><%= user %></p>
       <input type="text"  ng-model="searchTerm" required /> <br/>
-      <button type="submit" ng-click="findUser()" ng-disabled="!searchTerm">Find</button>
-      <p>data is {{data}} </p>
+      <button type="submit" ng-click="findUser()" ng-disabled="!searchTerm">Find</button> <br/>
+      <br/>
+      <img ng-src={{avatar}} width="50px" height="50px"/><br/>
+      <span>{{login}}</span>
   </body>
 </html>

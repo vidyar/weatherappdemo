@@ -12,9 +12,6 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <a href="/auth/github">Login</a>
-    <div data-ng-controller="GithubController">
-      <p>data is {{data}} </p>
-    </div>
     <form action="/results" method="post">
       <input type="text" pattern="^\d{5}$" name="zipCode" required /> <br/>
       <label>Please enter valid 5 digit zip codes Ex: 12345 </label> <br/>
