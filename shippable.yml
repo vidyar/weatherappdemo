@@ -3,6 +3,4 @@ node_js:
 language: node_js
 notifications:
     email:
-        - sharath@shippable.com
-        - sharath@shippable.com
-        - mailsharath@gmail.com
+        - vidya@shippable.com
