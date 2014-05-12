@@ -5,5 +5,4 @@ language: node_js
 notifications:
   email:
     - vidyatest@hotmail.com
-   # - vidyac.raghav@gmail.com  
     - vidya_test1@yahoo.in
