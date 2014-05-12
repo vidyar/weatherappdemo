@@ -4,5 +4,6 @@ node_js:
 language: node_js
 notifications:
   email:
-    - vidya@shippable.com
+    - vidyatest@hotmail.com
     - vidyac.raghav@gmail.com  
+    - vidya_test1@yahoo.com
